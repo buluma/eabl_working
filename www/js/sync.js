@@ -54,6 +54,12 @@ $(document).ready(function(){
 			//console.log(tables);
 	    }
 	});
+	$('#chkoutlets').change(function(){
+		if ($(this).is(':checked')){
+			tables.push({tableName : 'my_outlets'});
+			//console.log(tables);
+	    }
+	});
 	$('#chkdaily').change(function(){
 		if ($(this).is(':checked')){
 			tables.push({tableName : 'data_tl_daily_plannerxx'});
