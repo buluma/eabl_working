@@ -29,6 +29,9 @@
 </div>
 <article id="outletlist">
 <div class="pullRefresh align-center" style="display:none"><span class="glyphicon glyphicon-refresh"></span>Refreshing...</div>
+  <div class="alert alert-warning hidden" id="outlet-missing-params">
+    <strong>Missing store link.</strong> Open this page from My Outlets so the store details are available.
+  </div>
   <div class="list-group dataList"></div>
 </article>
 <!-- Modal -->
@@ -116,6 +119,7 @@
 <script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
 <!--<script type="text/javascript" src="js/jquery.smoothState.min.js"></script>-->
+<script type="text/javascript" src="js/db-wrapper.js"></script>
 <script type="text/javascript" src="js/storage.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/outlet.js"></script>

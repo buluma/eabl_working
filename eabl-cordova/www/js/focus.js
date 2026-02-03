@@ -8,6 +8,18 @@ var itemid = $.getUrlVar('store_id');
 var storename = decodeURI($.getUrlVar('store_name'));
 var store_server_id = $.getUrlVar('store_server_id');
 
+
+function ensureStoreParamsOrShowFallback(containerSelector) {
+  if (!itemid || itemid === 'undefined') {
+    var $container = $(containerSelector);
+    $container.find('.dataList').html('');
+    if ($container.find('.missing-store-params').length === 0) {
+      $container.prepend('<div class="alert alert-warning missing-store-params"><strong>Missing store link.</strong> Open this page from My Outlets so the store details are available.</div>');
+    }
+    return false;
+  }
+  return true;
+}
 $(document).ready(function(){
 	var backLink = '<h5><a href="storemenu.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="button">';
   backLink += '<span class="glyphicon glyphicon-arrow-left"> '+storename+'</a></h5>';
@@ -49,6 +61,7 @@ function saveItem() {
 }
 
 function fetchItems() {
+  if (!ensureStoreParamsOrShowFallback('article#recomlist')) { return; }
   var q = "SELECT * FROM focus_areas WHERE store_id = ? ORDER BY created_on DESC LIMIT 0, 10";
 
   db.transaction(function (t) {
