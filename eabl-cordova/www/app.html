@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">       
+  <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <script type="text/javascript" src="js/userdata.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <title>App Landing Page</title>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header pull-left">
+       <h5>GBC - Stock Monitoring 2.0</h5>
+    </div>
+    <div class="pull-right">
+      <button type="button" id="btnlogout" class="btn btn-default"><span class="glyphicon glyphicon-log-out"></span></button>   
+    </div>
+  </div>
+</nav>
+<div class="tabnavs">
+  <div class="container">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="app.html">Home</a></li>
+    <li role="presentation" id="storeslink"><a href="stores.html">My Outlets</a></li>
+    <li role="presentation"><a href="sync.html">Data Sync</a></li>
+  </ul>
+  </div>
+</div>
+<article id="apphome">
+ 
+</article>
+<!-- Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="User Modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">User Information</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+<footer>        
+   <div class="" role="group" id="home-footer" style="border-top: 1px solid #ccc">       
+   </div>  
+   <!--<nav class="navbar navbar-default navbar-fixed-bottom">             
+   </nav>-->
+</footer>
+</div> <!-- end container -->
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lenovo.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="icomoon/liga.js"></script>
+</body>
+</html>

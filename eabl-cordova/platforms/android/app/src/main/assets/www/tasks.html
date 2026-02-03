@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">       
+  <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <script type="text/javascript" src="js/userdata.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <title>My Weekly Objectives</title>
+</head>
+<body>
+<div class="container m-scene" id="transition">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header pull-left">
+      <h5>EABL Stock Monitoring 1.0</h5>
+    </div>
+    <div class="pull-right">
+      <button type="button" id="btnlogout" class="btn btn-default"><span class="glyphicon glyphicon-log-out"></span></button>
+    </div>
+  </div>
+</nav>
+<div class="tabnavs">
+  <div class="container">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="app.html">Home</a></li>
+    <li role="presentation" id="storeslink"><a href="stores.html">My Stores</a></li>
+    <li role="presentation"><a href="sync.html">Data Sync</a></li>
+  </ul>
+  </div>
+</div>
+<article id="artroute" style="margin-top:20px;">
+  <button type="button" class="btn btn-success" id="btnsyncObj">Sync Weekly Objectives</button>
+   <div class="ajax_request hide"><img src="img/loading.gif"/><br/>Loading</div>
+   <div class="syncmessage"></div>
+</article>
+<div id="newsku">
+  <h4 class="pull-left">This week's objectives</h4>
+  <button type="button" class="btn btn-warning pull-right" id="btnaddObj">Add</button>
+</div>
+<article id="inputform">
+<div class="pullRefresh align-center" style="display:none"><span class="glyphicon glyphicon-refresh"></span>Refreshing...</div>
+    <div class="list-group imeiList"></div>
+</article>
+<article id="scanedgroup">
+   <div class="list-group" id="scanedlist"></div>
+  <div id="saveholder" class="list-group" style="display:none;">
+      <div class="form-group list-group-item">
+         <button class="btn btn-primary btn-block" type="button" id="objSubmit">Save</button>
+      </div>   
+      <div class="alert alert-success alert-dismissible hidden" role="alert" id="FormNotification">
+        <p><span class="glyphicon glyphicon-ok"></span> Successfully Saved</p></div>
+  </div>
+</article>
+<article id="imeilistAll">
+    <div class="list-group imeiListdata"></div>
+</article>
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lenovo.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/tasks.js"></script>
+<script type="text/javascript" src="icomoon/liga.js"></script>
+</body>
+</html>

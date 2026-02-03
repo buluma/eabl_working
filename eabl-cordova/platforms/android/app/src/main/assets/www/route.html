@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-multiselect.css">
+<link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+<link rel="stylesheet" type="text/css" href="css/app.css">
+<script type="text/javascript" src="js/userdata.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<title>Weekly Planner</title>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header pull-left">
+      <h5>EABL Stock Monitoring 1.0</h5>
+    </div>
+    <div class="pull-right">
+      <button type="button" id="btnlogout" class="btn btn-default"><span class="glyphicon glyphicon-log-out"></span></button>
+    </div>
+  </div>
+</nav>
+<div class="tabnavs">
+  <div class="container">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="app.html">Home</a></li>
+    <li role="presentation" id="storeslink"><a href="stores.html">My Outlets</a></li>
+    <li role="presentation"><a href="sync.html">Data Sync</a></li>
+  </ul>
+  </div>
+</div>
+<article style="margin-top:20px;">
+  <button type="button" class="btn btn-success" id="btnsyncObj">Sync Weekly Planner</button>
+  <button type="button" class="btn btn-success hidden" id="btnsyncFetch">Fetch Weekly Plans</button>
+   <div class="ajax_request hide"><img src="img/loading.gif"/><br/>Loading</div>
+   <div class="syncmessage"></div>
+</article>
+<div id="newsku">
+  <h4 class="pull-left">Weekly Plan for this week</h4>
+  <button id="addRecom" type="button" class="btn btn-warning pull-right" data-dbid="0" data-toggle="modal" data-target="#form-modal">
+  Add</button>
+</div>
+<article id="artroute" style="margin-top:20px;">
+  <ul class="list-group" id="routeplan"></ul>
+</article>
+<!-- Modal -->
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Weekly Planx</h4>
+      </div>
+      <div class="modal-body">
+        <style>
+            /*label, input.form-control,select.form-control {width:50%;float:left;}*/
+            input.form-control,select.form-control {height: 25px;padding: 2px 12px;font-size: 11px;border-radius: 0;}
+            .list-group-item {padding: 5px 15px;overflow:visible;}
+        </style>
+        <!-- our data form -->
+          <div class="list-group">
+            <form name="formdisplayinput" id="formdisplayinput" action="">
+              <div id="form-holder"></div>
+              <div class="form-group list-group-item">
+                 <button class="btn btn-primary btn-block" type="button" id="displaySubmit" >Save</button>
+              </div>
+            </form>
+          </div>
+          <div class="alert alert-success alert-dismissible hidden" role="alert" id="FormNotification">
+            <p><span class="glyphicon glyphicon-ok"></span> Item Successfully Saved</p>
+          </div>
+        <!-- -->
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+</div>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="js/lenovo.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/routeplan.js"></script>
+<script type="text/javascript" src="icomoon/liga.js"></script>
+</body>
+</html>

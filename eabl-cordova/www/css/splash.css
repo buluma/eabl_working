@@ -1,0 +1,59 @@
+/*body {background-image: url(../img/bg.jpg);}*/
+body {
+    width : 100%;
+    height: 100%
+}
+body::after {
+  content: "";
+  background: url(../img/bg.jpg);
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+article > section, .scroller-vertical {padding:0 !important;}
+#splashscreen {margin-top:25%;text-align: center;}
+/*img.logo {width: 100%;}*/
+div.login {width:80%;margin:0 auto;}
+input.form-control {
+    background: rgba(255,255,255,0.7);
+    height: 45px;
+    color: #00964e;
+    border: 1px solid #ef3e2a;
+}
+#global-nav {display: none;}
+#forgot-pwd a {color:#ccc;}
+a.white {color:#fff;}
+a.white.btn:hover {color:#fff;}
+input {text-align: center;height:34px;}
+
+input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:  #fff;
+}
+
+.statusbar {
+	position: absolute;
+	bottom: 0;
+	left:10px;
+}
+.icon.spinning{
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+.glyphicon.spinning{
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}

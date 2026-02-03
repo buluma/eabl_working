@@ -1,0 +1,285 @@
+/* CSS Document */
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left;
+}
+body{
+    font-family: 'Maven Pro', Open Sans, sans-serif;
+}
+a {
+    color: #003457;
+    text-decoration: none;
+}
+.navbar-default {
+  background-color: #00964e;
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 1px 2px #666666;
+}
+.navbar .container-fluid {margin-top: 3px;}
+.navbar,.tabnavs {
+  min-height: 20px;
+  height: 40px;
+}
+.tabnavs,.storenav {
+  margin-top:40px;
+  background-color: rgba(0, 0, 0, 0.84);
+  margin-left: -15px;
+  margin-right: -15px;}
+.tabnavs .container .nav {margin-top: 10px;}
+.tabnavs .nav>li>a {
+  position: relative;
+  display: inline-block;
+  padding: 0px 0px 7px;
+  color:#fff;
+  border-radius: 0px;
+}
+.storenav .container {padding:0;}
+.storenav .storenav-item {  padding: 10px 0 0;
+  vertical-align: middle;
+  text-align: center;}
+.storenav .storenav-item > a {
+  position: relative;
+  display: inline;
+  padding: 0px;
+  color:#fff;
+  border-radius: 0px;
+  font-size: 12px;
+}
+.storenav .storenav-item > button {
+position: relative;
+display: inline;
+padding: 0px;
+color: #fff;
+border-radius: 0px;
+font-size: 12px;
+}
+.tabnavs .nav-pills li {width: 32%;text-align: center;}
+.nav-pills>li>a:hover, .nav-pills>li>a:focus, .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+  color: #fff;
+  background-color: transparent;
+  border-bottom: 0px solid orange;
+}
+.nav-pills>li.active, .nav-pills>li:hover {
+  color: #fff;
+  background-color: transparent;
+   border-bottom: 3px solid #ef3e2a;
+ }
+.navbar-fixed-bottom {box-shadow: 0 -2px 2px #666666;}
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+button#btnlogout {
+  color: #fff;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 3px 3px;
+}
+button#btnlogout span {font-size: 25px;}
+button.panelrefresh {
+  color: #fff;
+  background: transparent;
+  border-color: transparent;
+}
+article {margin-top: 20px;}
+.navbar-header h2 {margin-top:10px;}
+.navbar-header a {color:#fff;}
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.bold {
+  font-weight: 700;
+}
+.big-checkbox {
+    width: 25px;
+    height: 25px;
+    margin: -10px 0px 0px -40px !important;
+}
+
+.hidden {display:none;}
+.align-center {text-align:center;}
+.align-left {text-align:left;}
+.align-right {text-align:right;}
+.align-justify {text-align:justify;}
+footer {margin-top: 100px;}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: transparent;
+}
+.nav>li#hamburger {font-size: 40px;}
+.nav>li.refresh {font-size:27px;}
+.nav>li.refresh a:hover {color:#fff;}
+.nav>li#hamburger>a {
+  position: relative;
+  display: block;
+  padding: 0px 15px;
+}
+.navbar-header h2 {font-size:20px;margin-top:12px;line-height:1.6;}
+.container-fluid .navbar-header {margin-left:0px;}
+#action-toolbar-footer {width:100%;}
+#action-toolbar-footer .btn {width:33%;}
+button.float-button {width: 64px;height: 64px;background-color: #AB092F;position: fixed;margin-bottom: 0;right: 16px;bottom:16px;border-radius: 60px;color: #fff;font-size: 32px;}
+
+.list-group-item {overflow:auto; padding: 2px 15px;}
+#storelist .dataList a.list-group-item {overflow:auto;}
+#phonelist .dataList a.list-group-item {overflow:auto;}
+#apphome .thumbnail a > button {height:100px;font-size: 18px;}
+.app-info, .store-menu {overflow: auto;display: table;width:100%;}
+.app-info .home-info, .store-menu .store-label {height:auto;color:#fff;text-align: center;display: table-cell; vertical-align: middle}
+.home-info .valign, .store-label .valign {  margin: 40px 0;}
+.home-info .valign {margin:13% 0;}
+.big-badge {font-size: 40px;}
+.big-icon {font-size:18px;}
+.big-icon2 {font-size:40px;margin-right: 20px;}
+.quick-input-header {margin-top:30px;padding:10px 0;}
+
+.store-menu a.store-menu-item {padding: 0;}
+.store-menu a.store-menu-item button > h4 {font-size:12px;}
+.store-menu a.store-menu-item button {height:100px;border-radius: 0px;color:#00964e;}
+.store-menu a.store-menu-item button > span {color:#ef3e2a;}
+#storemenu .table tr > td{
+  width: 33%;
+  min-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+#storemenu .table tr td > div {
+  height: 60px;
+  margin-top:40px;
+}
+
+#newsku {
+  margin-top: 55px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  overflow: auto;
+}
+#newstore {
+  margin-top: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  overflow: auto;
+}
+#displaylistgroup .table>thead>tr>th, #displaylistgroup .table>tbody>tr>th, #displaylistgroup .table>tfoot>tr>th, #displaylistgroup .table>thead>tr>td, #displaylistgroup .table>tbody>tr>td, #displaylistgroup .table>tfoot>tr>td {
+  padding: 4px;
+  line-height: 1;
+  vertical-align: middle;
+  border-top: 1px solid #ddd;
+  font-size: 10px;
+}
+button.btn-clear {
+  background:none;
+}
+
+/*
+ * Keyframes
+ */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/*
+ * CSS Page Transitions
+ * Don't forget to add vendor prefixes!
+ */
+.m-scene {
+  /** Basic styles for an animated element */
+  .scene_element {
+    animation-duration: 0.25s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+
+  }
+
+  /** An element that fades in */
+  .scene-fadein {
+    animation-name: fadeIn;
+  }
+
+  /** An element that fades in and slides up */
+  .scene-fadeinup {
+    animation-name: fadeInUp;
+  }
+
+  /** An element that fades in and slides from the right */
+  .scene-fadeinright {
+    animation-name: fadeInRight;
+  }
+  /** Reverse "exit" animations */
+  &.is-exiting {
+      .scene_element {
+        animation-direction: alternate-reverse;
+      }
+  }
+}
+.btn-success {
+  color: #fff;
+  background-color: #00964e;
+  border-color: #00964e;
+}
+input#day-time-input.form-control{
+  border-radius: 4px;
+}
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 10px !important;
+  font-size: 12px !important;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+fieldset{
+  font-size: 12px;
+}
+form#formchecklist.form-horizontal label{
+  font-size: 12px !important;
+}
+
+h4, .h4 {
+    font-size: 16px !important;
+}
+h4.list-group-item-heading a{
+  color: #ef3e2a;
+}
+
+.hide-tl{
+  display: none;
+}

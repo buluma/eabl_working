@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <script type="text/javascript" src="js/userdata.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+
+<title>Sync Data</title>
+</head>
+
+<body>
+<div class="container m-scene" id="transition">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header pull-left">
+      <h5>GBC - Stock Monitoring 2.0</h5>
+    </div>
+    <div class="pull-right">
+      <button type="button" id="btnlogout" class="btn btn-default"><span class="glyphicon glyphicon-log-out"></span></button>
+    </div>
+  </div>
+</nav>
+<div class="tabnavs">
+  <div class="container">
+  <ul class="nav nav-pills">
+    <li role="presentation"><a href="app.html">Home</a></li>
+    <li role="presentation" id="storeslink"><a href="stores.html">My Outlets</a></li>
+    <li role="presentation" class="active"><a href="sync.html">Data Sync</a></li>
+  </ul>
+  </div>
+</div>
+<article>
+<div class="message" id="syncprompt"></div>
+<p>Select what to sync</p>
+<ul class="list-group">
+  <!--<li class="list-group-item hide-assigned">
+     <h4>
+        <span class="glyphicon glyphicon-home big-icon"></span> Outlets Check In/Out
+        <div class="checkbox pull-right"><input type="checkbox" id="chkstores" class="big-checkbox" checked></div>
+     </h4>
+  </li>-->
+  <li class="list-group-item">
+     <h4>
+        <span class="glyphicon glyphicon-hand-right big-icon"></span> Outlets Check In/Out
+        <div class="checkbox pull-right"><input type="checkbox" id="chkcheckin" class="big-checkbox"></div>
+     </h4>
+  </li>
+  <li class="list-group-item">
+     <h4>
+        <span class="glyphicon glyphicon-map-marker big-icon"></span> Outlet Locations
+        <div class="checkbox pull-right"><input type="checkbox" id="chklocations" class="big-checkbox"></div>
+     </h4>
+  </li>
+  <li class="list-group-item">
+     <h4>
+        <span class="glyphicon glyphicon-map-marker big-icon"></span> My Outlets
+        <div class="checkbox pull-right"><input type="checkbox" id="chkoutlets" class="big-checkbox"></div>
+     </h4>
+  </li>
+  <li class="list-group-item hide-tl">
+     <h4>
+        <span class="glyphicon icon-clipboard big-icon"></span> Outlet Focus Areas
+        <div class="checkbox pull-right"><input type="checkbox" id="chktl_focus" class="big-checkbox"></div>
+     </h4>
+  </li>
+  <!-- <li class="list-group-item hide-tl">
+      <h4>
+         <span class="glyphicon glyphicon-folder-open big-icon"></span> Brands
+         <div class="checkbox pull-right"><input type="checkbox" id="chkbrands" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+ <!--  <li class="list-group-item">
+      <h4>
+         <span class="icon icon-stats-bars big-icon"></span> Objectives
+         <div class="checkbox pull-right"><input type="checkbox" id="chkobjs" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+  <!--<li class="list-group-item hide-tl">
+      <h4>
+         <span class="icon icon-clipboard big-icon"></span> Recommendations
+         <div class="checkbox pull-right"><input type="checkbox" id="chkrecom" class="big-checkbox"></div>
+      <h4>
+  </li>-->
+<!--  <li class="list-group-item hide-tl">
+      <h4>
+         <span class="icon icon-happy big-icon"></span> VOC
+         <div class="checkbox pull-right"><input type="checkbox" id="chkvoc" class="big-checkbox"></div>
+      <h4>
+</li>
+  <!-- <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-gift big-icon"></span> EABL Activities
+          <div class="checkbox pull-right"><input type="checkbox" id="chkactivities" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-bullhorn big-icon"></span> Competitor Activities
+          <div class="checkbox pull-right"><input type="checkbox" id="chkcompes" class="big-checkbox"></div>
+      <h4>
+  </li>-->
+  <!-- <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-camera big-icon"></span> Photos
+          <div class="checkbox pull-right"><input type="checkbox" id="chkphotos" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+  <!--<li class="list-group-item hide-tl">
+      <h4>
+          <span class="icon icon-warning big-icon"></span> Quality Issues
+          <div class="checkbox pull-right"><input type="checkbox" id="chkissues" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item">
+      <h4>
+          <span class="glyphicon glyphicon-list-alt big-icon"></span> Callage
+          <div class="checkbox pull-right"><input type="checkbox" id="chkcallage" class="big-checkbox"></div>
+      <h4>
+  </li>-->
+  <!-- <li class="list-group-item">
+      <h4>
+          <span class="glyphicon glyphicon-road big-icon"></span> Daily Plan
+          <div class="checkbox pull-right"><input type="checkbox" id="chkdaily" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+  <!-- <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-inbox big-icon"></span> Empties
+          <div class="checkbox pull-right"><input type="checkbox" id="chkempties" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-th-list big-icon"></span> Listings
+          <div class="checkbox pull-right"><input type="checkbox" id="chklistings" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+  <!--<li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-credit-card big-icon"></span> Promotions
+          <div class="checkbox pull-right"><input type="checkbox" id="chkpromotions" class="big-checkbox"></div>
+      <h4>
+  </li>-->
+  <!-- <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-gift big-icon"></span> Performance
+          <div class="checkbox pull-right"><input type="checkbox" id="chkperform" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+  <!--<li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-modal-window big-icon"></span> Asset Management
+          <div class="checkbox pull-right"><input type="checkbox" id="chkassets" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-list big-icon"></span> Checklist
+          <div class="checkbox pull-right"><input type="checkbox" id="chkchklist" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <!--<li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-tower big-icon"></span> Challenges
+          <div class="checkbox pull-right"><input type="checkbox" id="chkchall" class="big-checkbox"></div>
+      <h4>
+  </li>-->
+  <!-- <li class="list-group-item hide-tl">
+      <h4>
+          <span class="icon icon-clipboard big-icon"></span> Focus Areas
+          <div class="checkbox pull-right"><input type="checkbox" id="chkfocus" class="big-checkbox"></div>
+      <h4>
+  </li> -->
+  <li class="list-group-item">
+      <h4>
+          <span class="icon icon-stats-bars big-icon"></span> Activation
+          <div class="checkbox pull-right"><input type="checkbox" id="chkactivation" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item">
+      <h4>
+          <span class="glyphicon glyphicon-th-list big-icon"></span> Availability
+          <div class="checkbox pull-right"><input type="checkbox" id="chkavailability" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item">
+      <h4>
+          <span class="icon icon-folder big-icon"></span> Placement
+          <div class="checkbox pull-right"><input type="checkbox" id="chkplacement" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <li class="list-group-item">
+      <h4>
+          <span class="icon icon-eye big-icon"></span> Visibility
+          <div class="checkbox pull-right"><input type="checkbox" id="chkvisibility" class="big-checkbox"></div>
+      <h4>
+  </li>
+  <!--<li class="list-group-item hide-tl">
+      <h4>
+          <span class="glyphicon glyphicon-usd big-icon"></span> Price Surveys
+          <div class="checkbox pull-right"><input type="checkbox" id="chkprice" class="big-checkbox"></div>
+      <h4>
+  </li>-->
+</ul>
+<div>
+   <button type="button" id="syncData" class="btn btn-success btn-block btn-lg">Sync Now</button>
+</div>
+<div class="syncmessage" style="margin-top:20px;"></div>
+<div class="progress" style="margin:20px;"></div>
+</article>
+
+<footer></footer>
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery.smoothState.min.js"></script>-->
+<script type="text/javascript" src="js/lenovo.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<!--<script type="text/javascript" src="js/smooth.js"></script>-->
+<script type="text/javascript" src="icomoon/liga.js"></script>
+<script type="text/javascript" src="js/webSqlSync.js"></script>
+<script type="text/javascript" src="js/sync.js"></script>
+
+</body>
+</html>

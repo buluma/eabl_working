@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'safe-inline'; media-src *">-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="css/splash.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+      <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+    <script type="text/javascript" src="cordova.js"></script>
+    <title>GBC - Stock Taking App</title>
+  </head>
+  <body>     
+    <article>
+      <section>     
+        <div id="splashscreen">       
+          <img src="img/gbclogo.png" class="logo" style="position:relative;top:100px;">      
+          <div class="login" id="login-screen" style="display:none;">
+            <form id="loginform" name="loginform" action="" method="post">
+              <div class="form-group" id="messagelog"></div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="loginUsername" placeholder="Username" name="login.username" required>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="login.password" value="promo@1" required>
+              </div>
+              <div class="form-group">
+                <button type="submit" id="loginUser" class="btn btn-danger btn-block" data-loading-text="Loading..." autocomplete="off">
+                  Log In
+                </button>
+                <span class="icon icon-spinner spinning hide" id="ajaxspinner"></span>
+              </div>                  
+            </form>              
+          </div>
+        </div>          
+      </section>
+    </article>
+    <script type="text/javascript" src="js/lenovo.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> 
+    <script type="text/javascript" src="js/moment.js"></script>  
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="icomoon/liga.js"></script> 
+    <script type="text/javascript" src="js/storage.js"></script>   
+    <script type="text/javascript" src="js/functions.js"></script> 
+    <script type="text/javascript" src="js/async.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>

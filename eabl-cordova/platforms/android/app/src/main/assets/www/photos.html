@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">       
+  <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-toggle.css">
+  <script type="text/javascript" src="js/userdata.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <title>Photos</title>
+  <style>
+      label, input.form-control,select.form-control {width:50%;float:left;}
+      input.form-control,select.form-control {height: 25px;padding: 2px 12px;font-size: 11px;border-radius: 0;}
+      .list-group-item {padding: 5px 15px;}
+      div.photo-area img.img-responsive, .photo-area img{width:40%;}
+  </style>
+</head>
+
+<body>
+<div class="container m-scene" id="transition">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header pull-left"></div>
+    <div class="pull-right"></div>
+  </div>
+</nav>
+<div id="newsku">
+  <h4 class="pull-left"> Photos</h4>
+  <button type="button" class="btn btn-warning pull-right" id="addphoto">Add</button>
+</div>
+<article id="cameraform">
+  <div class="list-group" style="display:none;">
+    <form name="formphotos" id="formphotos" action="">
+      <div class="form-group list-group-item">
+        <button type="button" class="btn btn-primary phototake" id="capturePhoto">Take Photo</button>
+      </div>
+      <div class="form-group list-group-item photo-area"></div>
+      <div class="form-group list-group-item">
+        <label>Date</label>
+        <input type="text" class="form-control" id="photodate" disabled>
+      </div>
+      <div class="form-group list-group-item">
+        <label>Manufacturer</label>
+        <select class="form-control" id="photomanuf">
+          <option value="">Select Manufacturer</option>
+          <option value="EABL">EABL</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="form-group list-group-item" id="selectphotomodels"></div> 
+      <div class="form-group list-group-item">
+        <label>Remarks</label>
+        <textarea class="form-control" id="photoremarks" rows="3" placeholder="Remarks"></textarea>
+      </div>
+      <div class="form-group list-group-item">
+        <button type="button" class="btn btn-primary btn-block" id="savePhoto">Save Photo Info</button>
+      </div>
+    </form>           
+  </div>
+  <div class="alert alert-success alert-dismissible hidden" role="alert" id="FormNotification">
+    <p><span class="glyphicon glyphicon-ok"></span> Item Successfully Saved</p>
+  </div>
+</article>
+<article id="photolist">
+  <div class="list-group">
+  </div>
+</article>
+<footer></footer>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-toggle.js"></script>
+<!--<script type="text/javascript" src="js/jquery.smoothState.min.js"></script>-->
+<!-- <script type="text/javascript" src="js/userdata.js"></script> -->
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<!--<script type="text/javascript" src="js/app.js"></script>-->
+<script type="text/javascript" src="js/photo.js"></script>
+<!--<script type="text/javascript" src="js/smooth.js"></script>-->
+<script type="text/javascript" src="icomoon/liga.js"></script>
+</body>
+</html>
