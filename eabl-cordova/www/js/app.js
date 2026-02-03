@@ -52,13 +52,18 @@ $(document).ready(function(){
     homeinfo +='  <button class="btn btn-success btn-block" type="button"><span class="icon icon-loop2 big-icon"></span> <h4>Data Synchronization</h4></button>';
     homeinfo +='</a>';
     // user is not known
-    if (userobj.is_promoter == 'undefined') {
+    if (typeof userobj !== 'undefined' && userobj.is_promoter == 'undefined') {
         //$('a#syncpagelink').addClass('hidden'); // hide the sync
     }
     homeinfo +='</div>';
     $('#apphome').append(homeinfo);
-    countStores();
 
+    // Wait for database to be ready before calling countStores
+    if (typeof waitForDbAndExecute !== 'undefined') {
+        waitForDbAndExecute(countStores);
+    } else {
+        countStores();
+    }
 });
 
 $(document).ready(function() {

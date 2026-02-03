@@ -1,19 +1,30 @@
-function fetchMyStores() {  
+function fetchMyStores() {
     var q = "SELECT * FROM stores ORDER BY name ASC";
-    db.transaction(function (t) {
-        t.executeSql(q, null, function (t, data) {            
-            var sl ='';
-            for (var i =0;i<data.rows.length;i++) {
-                sl += '<a href="storemenu.html?store_id='+data.rows.item(i).id+'&store_server_id='+data.rows.item(i).server_id+'&store_name='+data.rows.item(i).name+'" class="list-group-item list-group-item-info">';
-                sl += '<span class="glyphicon glyphicon-home big-icon2 pull-left"></span><h4>'+data.rows.item(i).name+'</h4>';
-                sl += '<p><span class="glyphicon glyphicon-map-marker"> </span>  '+data.rows.item(i).region+ '</p>';
-				sl += '</a>';
-            }
-            //sl += '</ul>';
-			$('article#storelist .dataList').html(sl);
+
+    // Check if db is available before attempting transaction
+    if (typeof window.db !== 'undefined' && window.db.transaction) {
+        window.db.transaction(function (t) {
+            t.executeSql(q, null, function (t, data) {
+                var sl ='';
+                if (data.rows && data.rows.length > 0) {
+                    for (var i = 0; i < data.rows.length; i++) {
+                        sl += '<a href="storemenu.html?store_id='+data.rows.item(i).id+'&store_server_id='+data.rows.item(i).server_id+'&store_name='+encodeURIComponent(data.rows.item(i).name)+'" class="list-group-item list-group-item-info">';
+                        sl += '<span class="glyphicon glyphicon-home big-icon2 pull-left"></span><h4>'+data.rows.item(i).name+'</h4>';
+                        sl += '<p><span class="glyphicon glyphicon-map-marker"> </span>  '+data.rows.item(i).region+ '</p>';
+                        sl += '</a>';
+                    }
+                } else {
+                    sl += '<div class="list-group-item"><p>No stores found</p></div>';
+                }
+                $('article#storelist .dataList').html(sl);
+            });
         });
-    });
+    } else {
+        console.error('Database not available for fetchMyStores');
+        $('article#storelist .dataList').html('<div class="list-group-item"><p>Database not available</p></div>');
+    }
 }
+
 // insert store into database
 function insertStore() {
     var stname = document.getElementById("storename").value;
@@ -23,25 +34,39 @@ function insertStore() {
     var phone = document.getElementById("phone").value;
     var email = document.getElementById("email").value;
     var cperson = document.getElementById("contactperson").value;
-    var submitter = username;
+    var submitter = typeof username !== 'undefined' ? username : 'unknown';
     //var coords = myposition[0];
-    var coords = userlocation;
+    var coords = typeof userlocation !== 'undefined' ? userlocation : '';
     //var coords = '32,50';
     var remarks = document.getElementById("storeremarks").value;
     //console.log("Store name is: "+stname);
-    
-    db.transaction(function(st) { 
-        st.executeSql('CREATE TABLE IF NOT EXISTS stores (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,name VARCHAR,region VARCHAR,location VARCHAR,building VARCHAR,address VARCHAR,phone VARCHAR,email VARCHAR,contactperson VARCHAR,coordinates VARCHAR,remarks VARCHAR,submitter VARCHAR,date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,last_sync TEXT DEFAULT "none")');
-        st.executeSql("INSERT INTO stores(name,region,location,address,phone,email,contactperson,coordinates,remarks,submitter)values('" + stname + "','"+region+"','"+location+"','"+addr+"','"+phone+"','"+email+"','"+cperson+"','"+coords+"','"+remarks+"','"+submitter+"')",null, alertSuccess);
-    },onError,onReadyTransaction);
+
+    if (typeof window.db !== 'undefined' && window.db.transaction) {
+        try {
+            window.db.transaction(function(st) {
+                // For IndexedDB, we don't need to create the table here as it's done during initialization
+                var insertQuery = "INSERT INTO stores(name,region,location,address,phone,email,contactperson,coordinates,remarks,submitter) VALUES ('" +
+                                 stname + "','" + region + "','" + location + "','" + addr + "','" +
+                                 phone + "','" + email + "','" + cperson + "','" + coords + "','" +
+                                 remarks + "','" + submitter + "')";
+                st.executeSql(insertQuery, null, alertSuccess, onError);
+            });
+            onReadyTransaction();
+        } catch (e) {
+            onError(e);
+        }
+    } else {
+        console.error('Database not available for insertStore');
+    }
 }
+
 // process our stores view
 $(document).ready(function() {
 	fetchMyStores();
 	$('button#btnlogout').on('click', function(){
         logOutUser();
     });
-	if (assigned == 'team-leader'){
+	if (typeof assigned !== 'undefined' && assigned == 'team-leader'){
 		$('#newstore').removeClass('hidden');
 	}
 
@@ -57,6 +82,6 @@ $(document).ready(function() {
 			$(this).each(function() {
 				this.reset();
 			});
-		}				
+		}
 	});
 });

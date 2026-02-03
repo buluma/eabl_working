@@ -107,18 +107,26 @@ called when device is ready ---> deviceready event
 */
 
 function countStores(){
-    var q = "SELECT * FROM stores";
-    var storecount = '0';
-    //console.log(db);
-    db.transaction(function (t) {
-        t.executeSql(q, null, function (t, data) {
-             //console.log(data.rows.length);
-            storecount = data.rows.length;
-          //  console.log(storecount);
-            $('span#openStoreCount').text(storecount);
-        },function(transaction,err){
-        	console.log(err.message);
-        });
+    waitForDbAndExecute(function() {
+        var q = "SELECT * FROM stores";
+        var storecount = '0';
+
+        // Check if db is available before attempting transaction
+        if (typeof window.db !== 'undefined' && window.db.transaction) {
+            window.db.transaction(function (t) {
+                t.executeSql(q, null, function (t, data) {
+                     //console.log(data.rows.length);
+                    storecount = data.rows ? data.rows.length : 0;
+                  //  console.log(storecount);
+                    $('span#openStoreCount').text(storecount);
+                },function(transaction,err){
+                	console.log(err.message);
+                });
+            });
+        } else {
+            console.error('Database not available for countStores');
+            $('span#openStoreCount').text('0');
+        }
     });
 }
 
@@ -160,13 +168,33 @@ callback function for the backbutton event
 function onConfirmExit(index) {
     //console.log('You selected button ' + index);
     if (localStorage.getItem('userdata') === null) {
-        navigator.app.exitApp();
+        // For browser environment, just redirect to index
+        if (typeof navigator !== 'undefined' && navigator.app) {
+            navigator.app.exitApp();
+        } else {
+            window.location.href = 'index.html';
+        }
     }
     else {
     	if (index == 2) {
-    		navigator.app.exitApp();
+            // For browser environment, just redirect to index
+            if (typeof navigator !== 'undefined' && navigator.app) {
+                navigator.app.exitApp();
+            } else {
+                window.location.href = 'index.html';
+            }
     	}
     	//else { return false;}
+    }
+}
+
+// Ensure database is ready before using it
+function waitForDbAndExecute(fn) {
+    if (typeof window.db !== 'undefined' && window.db.transaction) {
+        fn();
+    } else {
+        // Wait a bit and try again
+        setTimeout(() => waitForDbAndExecute(fn), 100);
     }
 }
 

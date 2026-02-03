@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Test</title>
+    <script src="js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <h1>Database Test Page</h1>
+    <div id="output"></div>
+    
+    <script type="text/javascript" src="js/db-wrapper.js"></script>
+    <script type="text/javascript" src="js/storage.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/populate-sample-data.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#output').append('<p>Document ready fired</p>');
+            
+            // Wait a bit for the database to initialize
+            setTimeout(function() {
+                if (typeof db !== 'undefined' && db.transaction) {
+                    $('#output').append('<p>Database object is available</p>');
+                    
+                    // Test the transaction function with the correct format
+                    try {
+                        db.transaction(function(tx) {
+                            // Try to execute a simple query
+                            tx.executeSql("SELECT COUNT(*) AS count FROM stores", [], 
+                                function(tx, results) {
+                                    $('#output').append('<p>Query successful, found ' + results.rows.item(0).count + ' stores</p>');
+                                    $('#output').append('<p>Database is working correctly!</p>');
+                                },
+                                function(tx, error) {
+                                    $('#output').append('<p>Query error: ' + error.message + '</p>');
+                                }
+                            );
+                        });
+                    } catch (e) {
+                        $('#output').append('<p>Error calling transaction: ' + e.message + '</p>');
+                    }
+                } else {
+                    $('#output').append('<p>Database object is NOT available</p>');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

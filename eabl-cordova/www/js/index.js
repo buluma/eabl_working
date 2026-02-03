@@ -1,6 +1,7 @@
 window.onload = function(e) {
     console.log('window loaded');
-    onDeviceReady();
+    // onDeviceReady will be called automatically when database is ready
+    // See db-wrapper.js for the initialization
 };
 
 $(window).load(function(){
