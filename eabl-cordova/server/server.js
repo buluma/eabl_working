@@ -8,7 +8,7 @@ const port = 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('www'));
+app.use(express.static(path.join(__dirname, '../www')));
 
 // Initialize SQLite database
 const dbPath = path.join(__dirname, '../www/data/eabl_app_db.sqlite');
@@ -238,6 +238,54 @@ app.get('/api/webservice.php', (req, res) => {
   });
 });
 
+// Fetch data endpoint for legacy clients
+app.get('/api/fetchdata.php', (req, res) => {
+  const itemType = req.query.data || '';
+  const keyMap = {
+    eablproducts: 'eabl_products',
+    eablobjectives: 'eabl_objectives'
+  };
+  const responseKey = keyMap[itemType] || itemType;
+  res.json({ [responseKey]: [] });
+});
+
+// Post data endpoint for legacy clients
+app.post('/api/postdata.php', express.text({ type: '*/*' }), (req, res) => {
+  let payload = req.body;
+  if (typeof payload === 'string' && payload.trim().length > 0) {
+    try {
+      payload = JSON.parse(payload);
+    } catch (error) {
+      return res.status(400).json({ status: 'ERROR', message: 'Invalid JSON payload' });
+    }
+  }
+
+  const itemsSynced = [];
+  if (payload && typeof payload === 'object') {
+    Object.values(payload).forEach((value) => {
+      if (Array.isArray(value)) {
+        value.forEach((item) => {
+          if (item && (item.id || item.ID)) {
+            itemsSynced.push(item.id || item.ID);
+          }
+        });
+      }
+    });
+  }
+
+  res.json({
+    status: 'OK',
+    message: 'Data received',
+    synctime: new Date().toISOString(),
+    items_synced: itemsSynced
+  });
+});
+
+// Get stocks endpoint for legacy clients
+app.get('/api/getstocks.php', (req, res) => {
+  res.json({ brandstocks: [] });
+});
+
 // Get all stores
 app.get('/api/stores', (req, res) => {
   const query = 'SELECT * FROM stores ORDER BY name ASC';
@@ -347,36 +395,43 @@ app.get('/api/stores/:id', (req, res) => {
 
 // Synchronization endpoint - returns all data that needs to be synced
 app.get('/api/sync', (req, res) => {
-  // Get all records that have not been synced
-  const query = `
-    SELECT * FROM (
-      SELECT * FROM stores WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM locations WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM shop_checkin WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM activation WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM visibility WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM placement WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM availability WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM my_outlets WHERE last_sync = 'none'
-      UNION ALL
-      SELECT * FROM focus_areas WHERE last_sync = 'none'
-    )
-  `;
-  
-  db.all(query, [], (err, rows) => {
-    if (err) {
-      console.error('Database error:', err.message);
-      return res.status(500).json({ error: 'Database error' });
-    }
-    
-    res.json(rows);
+  const tables = [
+    'stores',
+    'locations',
+    'shop_checkin',
+    'activation',
+    'visibility',
+    'placement',
+    'availability',
+    'my_outlets',
+    'focus_areas'
+  ];
+
+  const results = {};
+  let remaining = tables.length;
+  let hasError = false;
+
+  tables.forEach((table) => {
+    db.all(`SELECT * FROM ${table} WHERE last_sync = 'none'`, [], (err, rows) => {
+      if (err) {
+        console.error('Database error:', err.message);
+        if (!hasError) {
+          hasError = true;
+          return res.status(500).json({ error: 'Database error' });
+        }
+        return;
+      }
+
+      if (hasError) {
+        return;
+      }
+
+      results[table] = rows;
+      remaining -= 1;
+      if (remaining === 0) {
+        res.json(results);
+      }
+    });
   });
 });
 
@@ -409,6 +464,15 @@ app.post('/api/mark-synced', (req, res) => {
     }
     
     res.json({ message: `${this.changes} records marked as synced` });
+  });
+});
+
+// WebSQL sync adapter endpoint
+app.post('/sync/webSqlSyncAdapter.php', (req, res) => {
+  res.json({
+    result: 'OK',
+    syncDate: Date.now(),
+    data: {}
   });
 });
 
