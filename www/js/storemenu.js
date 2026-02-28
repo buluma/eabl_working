@@ -188,29 +188,29 @@ $(document).ready(function() {
         storemenu += '<a href="availability.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-6 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="glyphicon glyphicon-th-list big-icon"></span><h4>Availability</h4> </button>';
 	    storemenu += '</a>';
-        
+
         //placement
         storemenu += '<a href="placement.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-6 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="icon icon-folder big-icon"></span><h4>Placement</h4> </button>';
 	    storemenu += '</a>';
-        
+
         //visibility
         storemenu += '<a href="visibility.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-6 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="icon icon-eye big-icon"></span><h4>Visibility</h4> </button>';
 	    storemenu += '</a>';
-        
+
         //activation
         storemenu += '<a href="activation.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-6 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="icon icon-stats-bars big-icon"></span><h4>Activation</h4> </button>';
 	    storemenu += '</a>';
-        
-        /*storemenu += '<a href="objectives.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
+
+        storemenu += '<a href="objectives.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="icon icon-stats-bars big-icon"></span><h4> Objectives</h4> </button>';
 	    storemenu += '</a>';
-	    /*storemenu += '<a href="other_objectives.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
+	    storemenu += '<a href="other_objectives.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="icon icon-stats-bars big-icon"></span><h4>Other Objectives</h4> </button>';
 	    storemenu += '</a>';
-	    storemenu += '<a href="photos.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_id='+itemid+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
+	    /*storemenu += '<a href="photos.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_id='+itemid+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
 	    storemenu += '  <button class="btn btn-default btn-block" type="button"><span class="glyphicon glyphicon-camera big-icon"></span><h4><h4> Photos</h4> </button>';
 	    storemenu += '</a>  ';
 	    /*storemenu += '<a href="voc.html?store_id='+itemid+'&store_server_id='+store_server_id+'&store_name='+storename+'" class="col-xs-4 store-menu-item">';
